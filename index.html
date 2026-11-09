@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sepolia Bank · Infura | CSI301</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/web3@4.16.0/dist/web3.min.js"></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="./"><span aria-hidden="true">▥</span> Sepolia Bank · Infura</a>
+      <button id="connect" class="primary" type="button" disabled>เชื่อม MetaMask</button>
+    </header>
+
+    <section class="intro" aria-labelledby="heading">
+      <span class="badge">● &nbsp; SEPOLIA TESTNET</span>
+      <h1 id="heading">ธนาคารบน Ethereum</h1>
+      <p>อ่านยอดเงินผ่าน Infura และยืนยันการฝาก–ถอนผ่าน MetaMask</p>
+      <dl class="student">
+        <div><dt>รหัสนักศึกษา</dt><dd id="student-id">รอกรอกข้อมูล</dd></div>
+        <div><dt>ชื่อ–นามสกุล</dt><dd id="student-name">รอกรอกข้อมูล</dd></div>
+      </dl>
+    </section>
+
+    <div class="dashboard">
+      <section class="card balance-card" aria-labelledby="balance-heading">
+        <h2 id="balance-heading">ยอดเงินฝากในสัญญา</h2>
+        <div class="balance"><output id="balance" aria-live="polite">—</output><span>ETH</span></div>
+        <button id="refresh" type="button" disabled>ตรวจสอบยอด</button>
+        <div class="account"><span>บัญชี MetaMask</span><code id="account">ยังไม่เชื่อมต่อ</code></div>
+      </section>
+
+      <section class="card" aria-labelledby="transfer-heading">
+        <h2 id="transfer-heading">ฝากและถอน</h2>
+        <label for="amount">จำนวนเงิน</label>
+        <div class="input-wrap">
+          <input id="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0.001" maxlength="40">
+          <span>ETH</span>
+        </div>
+        <div class="actions">
+          <button id="deposit" class="primary" type="button" disabled>ฝากเงิน</button>
+          <button id="withdraw" type="button" disabled>ถอนเงิน</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="status" aria-live="polite">
+      <span id="status">กำลังเชื่อม Infura บน Sepolia</span>
+      <a id="transaction" target="_blank" rel="noopener noreferrer" hidden>ดูธุรกรรมบน Etherscan ↗</a>
+    </div>
+
+    <details class="settings">
+      <summary>ตั้งค่าสัญญาธนาคาร</summary>
+      <p>ใส่ Contract Address ของ Bank ที่ Deploy บน Sepolia</p>
+      <form id="settings-form">
+        <label for="contract-address">Contract Address</label>
+        <div class="settings-row">
+          <input id="contract-address" type="text" spellcheck="false" autocomplete="off" placeholder="0x…" maxlength="42" required>
+          <button id="save-address" type="submit">ใช้ที่อยู่นี้</button>
+        </div>
+      </form>
+    </details>
+    <footer><a id="explorer" target="_blank" rel="noopener noreferrer" hidden>ดูสัญญาบน Sepolia Etherscan ↗</a></footer>
+  </main>
+</body>
+</html>
